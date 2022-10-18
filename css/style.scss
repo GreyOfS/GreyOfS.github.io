@@ -1,5 +1,125 @@
+$background: var(--background);
+$big-title: var(--big-title);
+$paragraph: var(--paragraph);
+$button: var(--button);
+$button-text: var(--button-text);
+$stroke: var(--stroke);
+$main: var(--main);
+$highlight: var(--highlight);
+$secondary: var(--secondary);
+$tertiary: var(--tertiary);
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+}
+
+#hero_banner {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+    background-color: $background;
+
+    h1 {
+        font-family: 'Dancing Script', cursive;
+        font-size: 6vw;
+        color: $big-title;
+    }
+
+    img {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 40%;
+        height: auto;
+    }
+
+    a[href="#main"] {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 64px;
+        height: 64px;
+        background-color: $button;
+        border-radius: 50%;
+        bottom: 64px;
+        transition: transform .2s;
+
+        &:hover {
+            transform: scale(1.2);
+        }
+        div {
+            position: absolute;
+            height: 32px;
+            width: 32px;
+            border-width: 3px;
+            border-style: none solid solid none;
+            transform-origin: center;
+            transform: translateY(-10px) rotate(45deg);
+            
+            &:first-child {
+                border-color: $button-text;
+                opacity: .5;
+                animation: idle_hero_button 2s infinite cubic-bezier(0.55, 0.06, 0.68, 0.19);
+            }
+            
+            &:last-child {
+                border-color: $button-text;
+            }
+        }
+    }
+
+    #theme {
+        position: absolute;
+        top: 100px;
+        right: 100px;
+        width: 32px;
+        height: 32px;
+        background: none;
+        border: none;
+        overflow: hidden;
+
+        &:active {
+            transform: scale(.8);
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &[theme='m-light'] > svg{
+            left: -100%;
+        }
+
+        & > svg > path {
+            fill: $big-title;
+        }
+    }
+}
+
+@keyframes idle_hero_button {
+    0% {
+        transform: translateY(-10px) rotate(45deg);
+    }
+
+    90% {
+        transform: translateY(4px) rotate(45deg);
+    }
+
+    100% {
+        transform: translateY(-10px) rotate(45deg);
+    }
 }
