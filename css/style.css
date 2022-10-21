@@ -28,6 +28,15 @@ body.dark_mode {
   padding: 0;
   box-sizing: border-box;
 }
+*::-webkit-scrollbar {
+  background-color: var(--background);
+  width: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: var(--button);
+  width: 5px;
+  border-radius: 10px;
+}
 
 html {
   scroll-behavior: smooth;
