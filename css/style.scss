@@ -33,6 +33,7 @@ html {
 
 body {
     width: 100%;
+    background-color: $background;
 }
 
 #hero_banner {
@@ -52,7 +53,7 @@ body {
 
     img {
         position: absolute;
-        bottom: 0;
+        bottom: -5%;
         right: 0;
         width: 40%;
         height: auto;
@@ -133,5 +134,17 @@ body {
 
     100% {
         transform: translateY(-10px) rotate(45deg);
+    }
+}
+
+#main {
+    background-color: $background;
+    color: $paragraph;
+    padding: 100px 50px 100px;
+    box-shadow: 0 10px 110px $stroke;
+    
+
+    p {
+        margin-bottom: 50px;
     }
 }
