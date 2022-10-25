@@ -1,26 +1,30 @@
-let themeMode = null;
+const themeMode = {
+    current: null,
+    
+    set: (theme) => {
+        if (theme ===  'dark_mode') {
+            $('body').addClass('dark_mode');
+            cookie.set('themeMode', 'dark_mode')
+        } else if (theme === 'light_mode') {
+            $('body').removeClass('dark_mode');
+            cookie.set('themeMode', 'light_mode')
+        }
+        themeMode.current = theme;
+    },
 
-function setThemeMode(theme) {
-    if (theme ===  'dark_mode') {
-        $('body').addClass('dark_mode');
-    } else if (theme === 'light_mode') {
-        $('body').removeClass('dark_mode');
+    toggle: () => {
+        if (themeMode.current === 'dark_mode') {
+            themeMode.set('light_mode');
+        } else if (themeMode.current === 'light_mode') {
+            themeMode.set('dark_mode');
+        }
     }
-    themeMode = theme;
 }
 
-function toggleThemeMode() {
-    if (themeMode === 'dark_mode') {
-        setThemeMode('light_mode');
-    } else if (themeMode === 'light_mode') {
-        setThemeMode('dark_mode');
-    }
-}
-
-if (!isCookieSet('themeMode')){
-    setCookie('themeMode', 'dark_mode');
-    themeMode = 'dark_mode';
+if (!cookie.isSet('themeMode')){
+    cookie.set('themeMode', 'dark_mode');
+    themeMode.current = 'dark_mode';
 } else {
-    themeMode = getCookie('themeMode');
+    themeMode.current = cookie.get('themeMode');
 }
-setThemeMode(themeMode);
+setThemeMode(themeMode.current);
