@@ -28,3 +28,5 @@ const cookie = {
         }
     }
 }
+
+// TODO: Changer pour preferer l'utilisation des des localStorage / JSON

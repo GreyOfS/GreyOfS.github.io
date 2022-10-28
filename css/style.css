@@ -102,23 +102,21 @@ body {
   position: absolute;
   top: 100px;
   right: 200px;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   background: none;
   border: none;
   overflow: hidden;
 }
-#hero_banner #theme:active {
-  transform: scale(0.8);
-}
 #hero_banner #theme:hover {
   cursor: pointer;
 }
-#hero_banner #theme[theme=m-light] > svg {
-  left: -100%;
+#hero_banner #theme:active span::before {
+  -webkit-animation: bounce_button 0.2s forwards cubic-bezier(0, 1.3, 1, 1.3);
+          animation: bounce_button 0.2s forwards cubic-bezier(0, 1.3, 1, 1.3);
 }
-#hero_banner #theme > svg > path {
-  fill: var(--big-title);
+#hero_banner #theme span {
+  color: var(--big-title);
 }
 
 @-webkit-keyframes idle_hero_button {
@@ -142,6 +140,22 @@ body {
   }
   100% {
     transform: translateY(-10px) rotate(45deg);
+  }
+}
+@-webkit-keyframes bounce_button {
+  from {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes bounce_button {
+  from {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1);
   }
 }
 #main {
